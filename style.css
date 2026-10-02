@@ -1,0 +1,285 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f7fb;
+    color: #222;
+}
+
+header {
+    background: #b71c1c;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    margin-bottom: 8px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    background: white;
+    padding: 15px;
+    box-shadow: 0 2px 5px #ccc;
+}
+
+nav button {
+    background: #b71c1c;
+    color: white;
+    border: none;
+    padding: 11px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background: #7f0000;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 25px;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #ddd;
+}
+
+.card h3 {
+    margin-bottom: 12px;
+}
+
+.card p {
+    font-size: 32px;
+    font-weight: bold;
+    color: #b71c1c;
+}
+
+.dashboard-box {
+    background: white;
+    padding: 25px;
+    margin-top: 25px;
+    border-radius: 10px;
+}
+
+#emergencyStatus {
+    padding: 20px;
+    background: #fff3f3;
+    border-left: 5px solid #b71c1c;
+}
+
+form,
+.route-form {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    max-width: 650px;
+    box-shadow: 0 2px 8px #ddd;
+}
+
+label {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 11px 17px;
+    background: #b71c1c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.table-container {
+    overflow-x: auto;
+    background: white;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 13px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background: #b71c1c;
+    color: white;
+}
+
+.available {
+    color: #188038;
+    font-weight: bold;
+}
+
+.busy {
+    color: #b71c1c;
+    font-weight: bold;
+}
+
+.critical {
+    color: #b71c1c;
+    font-weight: bold;
+}
+
+.high {
+    color: #e67e22;
+    font-weight: bold;
+}
+
+.normal {
+    color: #1769aa;
+    font-weight: bold;
+}
+
+.route-result {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 2px 8px #ddd;
+}
+
+.route-result h3 {
+    color: #b71c1c;
+    margin-bottom: 15px;
+}
+
+.route-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.route-box div {
+    background: #f4f7fb;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.route-box strong {
+    display: block;
+    font-size: 24px;
+    margin-top: 8px;
+    color: #b71c1c;
+}
+
+.report-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.report-cards div {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #ddd;
+}
+
+.report-cards p {
+    font-size: 30px;
+    font-weight: bold;
+    color: #b71c1c;
+    margin-top: 10px;
+}
+
+.danger {
+    background: #333;
+}
+
+@media (max-width: 800px) {
+
+    .cards,
+    .report-cards,
+    .route-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+
+    .cards,
+    .report-cards,
+    .route-box {
+        grid-template-columns: 1fr;
+    }
+
+    nav button {
+        width: 100%;
+    }
+
+    main {
+        padding: 15px;
+    }
+}
+
+@media print {
+
+    nav,
+    button,
+    form {
+        display: none;
+    }
+
+    .section {
+        display: block;
+    }
+}

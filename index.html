@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambulance Route Optimization</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🚑 Ambulance Route Optimization</h1>
+    <p>Emergency response and shortest-route management system</p>
+</header>
+
+<nav>
+    <button onclick="showSection('dashboard')">Dashboard</button>
+    <button onclick="showSection('ambulances')">Ambulances</button>
+    <button onclick="showSection('hospitals')">Hospitals</button>
+    <button onclick="showSection('emergency')">Emergency Request</button>
+    <button onclick="showSection('routes')">Route Optimization</button>
+    <button onclick="showSection('history')">Route History</button>
+    <button onclick="showSection('reports')">Reports</button>
+</nav>
+
+<main>
+
+<!-- DASHBOARD -->
+
+<section id="dashboard" class="section active">
+
+    <h2>Dashboard</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Ambulances</h3>
+            <p id="totalAmbulances">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Available</h3>
+            <p id="availableAmbulances">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Hospitals</h3>
+            <p id="totalHospitals">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Emergency Requests</h3>
+            <p id="totalRequests">0</p>
+        </div>
+
+    </div>
+
+    <div class="dashboard-box">
+
+        <h2>🚨 Emergency Status</h2>
+
+        <div id="emergencyStatus">
+            No active emergency request
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- AMBULANCE REGISTRATION -->
+
+<section id="ambulances" class="section">
+
+    <h2>🚑 Ambulance Registration</h2>
+
+    <form id="ambulanceForm">
+
+        <label>Ambulance Number</label>
+        <input
+            type="text"
+            id="ambulanceNumber"
+            placeholder="AP-01-AB-1234"
+            required
+        >
+
+        <label>Driver Name</label>
+        <input
+            type="text"
+            id="driverName"
+            required
+        >
+
+        <label>Driver Phone</label>
+        <input
+            type="tel"
+            id="driverPhone"
+            required
+        >
+
+        <label>Ambulance Type</label>
+        <select id="ambulanceType">
+
+            <option value="Basic">
+                Basic Life Support
+            </option>
+
+            <option value="Advanced">
+                Advanced Life Support
+            </option>
+
+            <option value="ICU">
+                ICU Ambulance
+            </option>
+
+        </select>
+
+        <label>Current Location</label>
+        <input
+            type="text"
+            id="ambulanceLocation"
+            placeholder="Location"
+            required
+        >
+
+        <button type="submit">
+            Register Ambulance
+        </button>
+
+    </form>
+
+    <h3>Registered Ambulances</h3>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Driver</th>
+                    <th>Phone</th>
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="ambulanceTable"></tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- HOSPITAL REGISTRATION -->
+
+<section id="hospitals" class="section">
+
+    <h2>🏥 Hospital Registration</h2>
+
+    <form id="hospitalForm">
+
+        <label>Hospital Name</label>
+
+        <input
+            type="text"
+            id="hospitalName"
+            required
+        >
+
+        <label>Hospital Location</label>
+
+        <input
+            type="text"
+            id="hospitalLocation"
+            required
+        >
+
+        <label>Emergency Beds</label>
+
+        <input
+            type="number"
+            id="hospitalBeds"
+            min="0"
+            required
+        >
+
+        <label>Emergency Facility</label>
+
+        <select id="emergencyFacility">
+
+            <option value="Yes">
+                Available
+            </option>
+
+            <option value="No">
+                Not Available
+            </option>
+
+        </select>
+
+        <button type="submit">
+            Register Hospital
+        </button>
+
+    </form>
+
+    <h3>Registered Hospitals</h3>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Hospital</th>
+                    <th>Location</th>
+                    <th>Beds</th>
+                    <th>Emergency</th>
+                </tr>
+            </thead>
+
+            <tbody id="hospitalTable"></tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- EMERGENCY REQUEST -->
+
+<section id="emergency" class="section">
+
+    <h2>🚨 Emergency Request</h2>
+
+    <form id="emergencyForm">
+
+        <label>Patient Name</label>
+
+        <input
+            type="text"
+            id="patientName"
+            required
+        >
+
+        <label>Patient Contact</label>
+
+        <input
+            type="tel"
+            id="patientContact"
+            required
+        >
+
+        <label>Emergency Location</label>
+
+        <input
+            type="text"
+            id="emergencyLocation"
+            required
+        >
+
+        <label>Emergency Type</label>
+
+        <select id="emergencyType">
+
+            <option>Accident</option>
+            <option>Cardiac Emergency</option>
+            <option>Breathing Emergency</option>
+            <option>Critical Injury</option>
+            <option>Other</option>
+
+        </select>
+
+        <label>Priority</label>
+
+        <select id="emergencyPriority">
+
+            <option value="1">
+                Critical
+            </option>
+
+            <option value="2">
+                High
+            </option>
+
+            <option value="3">
+                Normal
+            </option>
+
+        </select>
+
+        <button type="submit">
+            Create Emergency Request
+        </button>
+
+    </form>
+
+    <div id="requestResult"></div>
+
+</section>
+
+
+<!-- ROUTE OPTIMIZATION -->
+
+<section id="routes" class="section">
+
+    <h2>🗺️ Route Optimization</h2>
+
+    <div class="route-form">
+
+        <label>Select Emergency Request</label>
+
+        <select id="routeRequest"></select>
+
+        <label>Select Ambulance</label>
+
+        <select id="routeAmbulance"></select>
+
+        <label>Traffic Level</label>
+
+        <select id="trafficLevel">
+
+            <option value="1">
+                Low
+            </option>
+
+            <option value="1.5">
+                Moderate
+            </option>
+
+            <option value="2">
+                Heavy
+            </option>
+
+            <option value="3">
+                Very Heavy
+            </option>
+
+        </select>
+
+        <button onclick="calculateRoute()">
+            Find Nearest Hospital & Shortest Route
+        </button>
+
+    </div>
+
+    <div id="routeResult" class="route-result"></div>
+
+</section>
+
+
+<!-- ROUTE HISTORY -->
+
+<section id="history" class="section">
+
+    <h2>📍 Route History</h2>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Patient</th>
+                    <th>Ambulance</th>
+                    <th>Hospital</th>
+                    <th>Distance</th>
+                    <th>Traffic</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="historyTable"></tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- REPORTS -->
+
+<section id="reports" class="section">
+
+    <h2>📊 Trip Reports</h2>
+
+    <div class="report-cards">
+
+        <div>
+            <h3>Total Trips</h3>
+            <p id="totalTrips">0</p>
+        </div>
+
+        <div>
+            <h3>Average Distance</h3>
+            <p id="averageDistance">0 km</p>
+        </div>
+
+        <div>
+            <h3>Average Time</h3>
+            <p id="averageTime">0 min</p>
+        </div>
+
+        <div>
+            <h3>Critical Trips</h3>
+            <p id="criticalTrips">0</p>
+        </div>
+
+    </div>
+
+    <button onclick="printReport()">
+        Print Report
+    </button>
+
+    <button class="danger" onclick="clearData()">
+        Clear Data
+    </button>
+
+</section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
